@@ -1,0 +1,4 @@
+[x] Add an (auto-)save functionality using e.g. the localStorage API
+[x] Make the UI a bit more intriguing
+  [x] Make the landing page feel more alive
+    // at least a little
