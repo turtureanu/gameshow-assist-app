@@ -22,8 +22,13 @@
     'pos-fixed top-0 opacity-0 transition-all duration-200 hover:opacity-100'}"
 >
   <div class="flex gap-2 p-2">
-    <NavLink href="/keep-the-score">Keep the Score</NavLink>
-    <NavLink href="/wheel">Spin the Wheel</NavLink>
+    <NavLink
+      href="https://turtureanu.github.io/gameshow-assist-app/keep-the-score"
+      >Keep the Score</NavLink
+    >
+    <NavLink href="https://turtureanu.github.io/gameshow-assist-app/wheel"
+      >Spin the Wheel</NavLink
+    >
   </div>
   <div class="flex items-center p-2">
     <div class="ml-a w-min h-min flex gap-2">

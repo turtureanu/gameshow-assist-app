@@ -8,10 +8,12 @@
 >
   <NavLink
     class="outline-6 hover:outline hover:outline-lightblue p-16 bg-gradient-to-tr bg-gradient-from-teal-100 bg-gradient-to-blue-200"
-    href="/keep-the-score">Keep the Score</NavLink
+    href="https://turtureanu.github.io/gameshow-assist-app/keep-the-score"
+    >Keep the Score</NavLink
   >
   <NavLink
     class="outline-6 hover:outline hover:outline-red p-16 bg-gradient-to-tr bg-gradient-from-violet-100 bg-gradient-to-red-200"
-    href="/wheel">Spin the wheel</NavLink
+    href="https://turtureanu.github.io/gameshow-assist-app/wheel"
+    >Spin the wheel</NavLink
   >
 </div>
