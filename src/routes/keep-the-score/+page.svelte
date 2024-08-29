@@ -204,6 +204,7 @@
                             team.canEdit = true;
                             await tick();
                             ref?.focus();
+                            saveState();
                           }}
                         >
                           <Icon icon="fa6-solid:pencil" />
@@ -219,6 +220,7 @@
                             if (team.name.trim()) {
                               team.canEdit = false;
                             }
+                            saveState();
                           }}
                           action="submit"
                         >
@@ -232,10 +234,10 @@
                   >
                     <BaseButton
                       class="text-2xl flex justify-center items-center p-2 rd-lg w-full h-full bg-white hover:bg-red-200"
-                      onclick={() =>
-                        (teams = [
-                          ...teams.filter((e) => e.name !== team.name),
-                        ])}
+                      onclick={() => {
+                        teams = [...teams.filter((e) => e.name !== team.name)];
+                        saveState();
+                      }}
                     >
                       <Icon icon="fa6-solid:trash" />
                     </BaseButton>

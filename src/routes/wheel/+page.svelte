@@ -210,10 +210,10 @@
                   >
                     <BaseButton
                       class="text-2xl flex justify-center items-center p-2 rd-lg w-full h-full bg-white hover:bg-red-200"
-                      onclick={() =>
-                        (items = [
-                          ...items.filter((e) => e.name !== item.name),
-                        ])}
+                      onclick={() => {
+                        items = [...items.filter((e) => e.name !== item.name)];
+                        saveState();
+                      }}
                     >
                       <Icon icon="fa6-solid:trash" />
                     </BaseButton>
