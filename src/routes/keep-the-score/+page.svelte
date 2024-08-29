@@ -103,7 +103,7 @@
 {#if !isCountingShown}
   <div class="h-full" in:fade={{ duration: 200 }}>
     <div
-      class="flex flex-col justify-start items-center m-auto {$areBarsHidden
+      class="flex flex-col justify-start items-center m-auto w-full {$areBarsHidden
         ? 'pt-32'
         : 'pt-20'}"
     >
@@ -112,9 +112,10 @@
           e.preventDefault();
           addTeam();
         }}
+        class="w-full"
       >
         <div
-          class="m-auto w-sm flex items-center transition-all transition-delay-300"
+          class="m-auto w-full max-w-sm flex items-center transition-all transition-delay-300"
         >
           <label
             for="team-name"
@@ -153,7 +154,7 @@
           Can't add more teams!
         </div>
       {/if}
-      <div class="w-sm">
+      <div class="w-full max-w-sm">
         <BaseButton
           class="p-2 text-3xl w-full bg-gray-300 rd-lg mt-6 {teams.length > 1
             ? 'font-bold bg-green-200 hover:bg-green-300 cursor-pointer'
@@ -164,77 +165,81 @@
           }}>Start counting</BaseButton
         >
       </div>
-      <form onsubmit={(e: Event) => e.preventDefault()}>
-        <div class="mt-20">
+      <form onsubmit={(e: Event) => e.preventDefault()} class="w-full">
+        <div class="mt-20 w-full">
           {#each teams as team, i (team.id)}
-            <div
-              class="flex justify-between items-center gap-x-2 w-xl rd-lg mx-auto mb-6"
-              style="background-color: {colors[i % colors.length]}"
-              in:fade={{ duration: 150 }}
-              out:fade={{ duration: 150 }}
-            >
-              {#if team.canEdit}
-                <input
-                  class="btn text-3xl font-bold ml-2 my-2 p-2 w-full resize-none h-full focus:(outline-none b-b-3 b-b-white b-b-solid)"
-                  bind:value={team.name}
-                  disabled={!team.canEdit}
-                  bind:this={ref}
-                  required
-                  name="team-name"
-                  id="team-{team.name}"
-                />
-              {:else}
-                <div
-                  class="btn text-4xl font-bold pl-4 py-2 rd-lg w-full resize-none h-full text-overflow"
-                >
-                  {team.name}
-                </div>
-              {/if}
-              <div class="flex gap-x-2 m-2">
-                <label for="team-{team.name}">
-                  {#if team.canEdit === false}
-                    <div
-                      class="flex justify-center items-center min-w-[55px] h-[55px]"
-                    >
-                      <BaseButton
-                        class="text-2xl flex justify-center items-center p-2 rd-lg w-full h-full bg-white hover:bg-yellow-200"
-                        onclick={async () => {
-                          team.canEdit = true;
-                          await tick();
-                          ref?.focus();
-                        }}
-                      >
-                        <Icon icon="fa6-solid:pencil" />
-                      </BaseButton>
-                    </div>
-                  {:else}
-                    <div
-                      class="flex justify-center items-center min-w-[55px] h-[55px]"
-                    >
-                      <BaseButton
-                        class="text-2xl flex justify-center items-center p-2 rd-lg w-full h-full bg-white hover:bg-green-200"
-                        onclick={() => {
-                          if (team.name.trim()) {
-                            team.canEdit = false;
-                          }
-                        }}
-                        action="submit"
-                      >
-                        <Icon icon="fa-solid:check" />
-                      </BaseButton>
-                    </div>
-                  {/if}
-                </label>
-                <div
-                  class="flex justify-center items-center min-w-[55px] h-[55px]"
-                >
-                  <BaseButton
-                    class="text-2xl flex justify-center items-center p-2 rd-lg w-full h-full bg-white hover:bg-red-200"
-                    onclick={() =>
-                      (teams = [...teams.filter((e) => e.name !== team.name)])}
+            <div class="w-full max-w-xl mx-auto">
+              <div
+                class="flex justify-between items-center gap-x-2 rd-lg mx-5 mb-6"
+                style="background-color: {colors[i % colors.length]}"
+                in:fade={{ duration: 150 }}
+                out:fade={{ duration: 150 }}
+              >
+                {#if team.canEdit}
+                  <input
+                    class="btn text-3xl font-bold ml-2 my-2 p-2 w-full resize-none h-full focus:(outline-none b-b-3 b-b-white b-b-solid)"
+                    bind:value={team.name}
+                    disabled={!team.canEdit}
+                    bind:this={ref}
+                    required
+                    name="team-name"
+                    id="team-{team.name}"
+                  />
+                {:else}
+                  <div
+                    class="btn text-4xl font-bold pl-4 py-2 rd-lg w-full resize-none h-full text-overflow"
                   >
-                    <Icon icon="fa6-solid:trash" />
-                  </BaseButton>
+                    {team.name}
+                  </div>
+                {/if}
+                <div class="flex gap-x-2 m-2">
+                  <label for="team-{team.name}">
+                    {#if team.canEdit === false}
+                      <div
+                        class="flex justify-center items-center min-w-[55px] h-[55px]"
+                      >
+                        <BaseButton
+                          class="text-2xl flex justify-center items-center p-2 rd-lg w-full h-full bg-white hover:bg-yellow-200"
+                          onclick={async () => {
+                            team.canEdit = true;
+                            await tick();
+                            ref?.focus();
+                          }}
+                        >
+                          <Icon icon="fa6-solid:pencil" />
+                        </BaseButton>
+                      </div>
+                    {:else}
+                      <div
+                        class="flex justify-center items-center min-w-[55px] h-[55px]"
+                      >
+                        <BaseButton
+                          class="text-2xl flex justify-center items-center p-2 rd-lg w-full h-full bg-white hover:bg-green-200"
+                          onclick={() => {
+                            if (team.name.trim()) {
+                              team.canEdit = false;
+                            }
+                          }}
+                          action="submit"
+                        >
+                          <Icon icon="fa-solid:check" />
+                        </BaseButton>
+                      </div>
+                    {/if}
+                  </label>
+                  <div
+                    class="flex justify-center items-center min-w-[55px] h-[55px]"
+                  >
+                    <BaseButton
+                      class="text-2xl flex justify-center items-center p-2 rd-lg w-full h-full bg-white hover:bg-red-200"
+                      onclick={() =>
+                        (teams = [
+                          ...teams.filter((e) => e.name !== team.name),
+                        ])}
+                    >
+                      <Icon icon="fa6-solid:trash" />
+                    </BaseButton>
+                  </div>
                 </div>
               </div>
             </div>

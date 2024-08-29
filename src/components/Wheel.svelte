@@ -36,7 +36,7 @@
     const width = canvas.offsetWidth;
 
     // Change the size of the wheel
-    wheelSize = width > height ? height / 2 - 80 : width / 2 - 25;
+    wheelSize = width > height ? height / 2 - 100 : width / 2 - 30;
 
     console.log(wheelSize);
 
