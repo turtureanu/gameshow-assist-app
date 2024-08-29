@@ -29,9 +29,9 @@
 
   let items: Item[] = $state([]);
 
-  let newItemName: string = $state.frozen("");
+  let newItemName: string = $state.raw("");
 
-  let areTooManyitems: boolean = $state.frozen(false);
+  let areTooManyitems: boolean = $state.raw(false);
 
   // check for a duplicate name entry
   // then add the entry to the array

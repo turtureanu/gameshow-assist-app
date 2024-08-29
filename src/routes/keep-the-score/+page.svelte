@@ -51,9 +51,9 @@
 
   let teams: Team[] = $state([]);
 
-  let newTeamName: string = $state.frozen("");
+  let newTeamName: string = $state.raw("");
 
-  let areTooManyTeams: boolean = $state.frozen(false);
+  let areTooManyTeams: boolean = $state.raw(false);
 
   // check for a duplicate name entry
   // then add the entry to the array
